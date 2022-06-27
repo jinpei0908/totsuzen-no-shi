@@ -14,7 +14,7 @@ export async function main(denops: Denops): Promise<void> {
     async totsuzen(text: unknown): Promise<void> {
       ensureString(text);
       const decoratedText = decorate(text);
-      await denops.call("setline", ".", decoratedText);
+      await denops.call("append", ".", decoratedText);
     },
   };
 
