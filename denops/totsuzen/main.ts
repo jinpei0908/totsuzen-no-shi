@@ -1,7 +1,7 @@
 import { Denops } from "https://deno.land/x/denops_std@v1.0.0/mod.ts";
 import { ensureString } from "https://deno.land/x/unknownutil@v0.1.1/mod.ts";
 
-function decorate(text: string): string[] {
+export function decorate(text: string): string[] {
   const length = text.length;
   const top = `＿${"人".repeat(length)}＿`;
   const medium = `＞ ${text} ＜`;
