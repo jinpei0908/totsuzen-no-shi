@@ -1,11 +1,17 @@
 import { Denops } from "https://deno.land/x/denops_std@v1.0.0/mod.ts";
 import { ensureString } from "https://deno.land/x/unknownutil@v0.1.1/mod.ts";
+import stringWidth from "https://esm.sh/string-width";
+import { round } from "https://deno.land/x/math@v1.1.0/mod.ts";
 
+/**
+ * textを装飾した文字列のリストを返す
+ */
 export function decorate(text: string): string[] {
-  const length = text.length;
-  const top = `＿${"人".repeat(length)}＿`;
-  const medium = `＞ ${text} ＜`;
-  const bottom = `￣${"Y^".repeat(length)}Y￣`;
+  const doubledDiplayWidth = stringWidth(text);
+  const displayWidth = Number(round(doubledDiplayWidth / 2, 0));
+  const top = `＿${"人".repeat(displayWidth + 2)}＿`;
+  const medium = `＞　${text}　＜`;
+  const bottom = `￣${"Y^".repeat(displayWidth + 2)}Y￣`;
   return [top, medium, bottom];
 }
 
